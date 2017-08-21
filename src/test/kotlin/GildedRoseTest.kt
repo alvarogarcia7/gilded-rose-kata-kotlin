@@ -28,6 +28,18 @@ class GildedRoseTest {
             assertEquals(4, item.quality)
         }
     }
+
+    @Test
+    fun shouldQualityBeNeverNegative() {
+        val items = arrayOf<Item>(Item("anItem", 10, 0))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals("anItem", app.items[0].name)
+        assertEquals(9, app.items[0].sellIn)
+        assertEquals(0, app.items[0].quality)
+    }
+
+
 }
 
 
