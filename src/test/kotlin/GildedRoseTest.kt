@@ -13,7 +13,20 @@ class GildedRoseTest {
         assertEquals("anItem", app.items[0].name)
         assertEquals(2, app.items[0].sellIn)
         assertEquals(4, app.items[0].quality)
+    }
 
+    @Test fun shouldLowerSellInAndQualityOfAllItemsAtTheEndOfEachDay() {
+        val items = arrayOf<Item>(
+                Item("anItem", 3, 5),
+                Item("anItem", 3, 5))
+        val app = GildedRose(items)
+        app.updateQuality()
+
+        for (item in app.items) {
+            assertEquals("anItem", item.name)
+            assertEquals(2, item.sellIn)
+            assertEquals(4, item.quality)
+        }
     }
 }
 
