@@ -74,6 +74,16 @@ class GildedRoseTest {
         `"Sulfuras", being a legendary item, never has to be sold or decreases in Quality`(1, 2)
     }
 
+    @Test
+    fun sulfurasNeverShouldBeSoldOrDecreasesInQuality_caseMaximumNormalQuality() {
+        `"Sulfuras", being a legendary item, never has to be sold or decreases in Quality`(1, 50)
+    }
+
+    @Test
+    fun sulfurasNeverShouldBeSoldOrDecreasesInQuality_caseMaximumQuality() {
+        `"Sulfuras", being a legendary item, never has to be sold or decreases in Quality`(1, 80)
+    }
+
     private fun `"Sulfuras", being a legendary item, never has to be sold or decreases in Quality`(sellIn: Int, quality: Int) {
         val items = updateQualityTo(arrayOf(Item("Sulfuras, Hand of Ragnaros", sellIn, quality)))
         assertEquals(sellIn, items[0].sellIn)
