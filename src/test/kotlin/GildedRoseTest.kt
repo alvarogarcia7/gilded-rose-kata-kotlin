@@ -57,6 +57,13 @@ class GildedRoseTest {
         assertEquals(4, items[0].quality)
     }
 
+    @Test
+    fun qualityShouldNotBeLargerThan50() {
+        val items = updateQualityTo(arrayOf(Item("Aged Brie", 0, 50)))
+        assertEquals(-1, items[0].sellIn)
+        assertEquals(50, items[0].quality)
+    }
+
     private fun updateQualityTo(items: Array<Item>): Array<Item> {
         val app = GildedRose(items)
         app.updateQuality()
