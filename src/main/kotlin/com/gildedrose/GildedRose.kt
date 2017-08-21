@@ -37,7 +37,7 @@ class GildedRose(var items: Array<Item>) {
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality
+                        items[i].quality = 0
                     }
                 } else {
                     increaseQuality(items[i])
