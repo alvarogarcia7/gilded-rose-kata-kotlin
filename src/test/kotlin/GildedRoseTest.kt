@@ -7,7 +7,7 @@ class GildedRoseTest {
 
     @Test
     fun shouldLowerSellInAndQualityOfItemAtTheEndOfEachDay() {
-        val items = arrayOf<Item>(Item("anItem", 3, 5))
+        val items = arrayOf(Item("anItem", 3, 5))
         val app = GildedRose(items)
         app.updateQuality()
         assertEquals("anItem", app.items[0].name)
@@ -16,7 +16,7 @@ class GildedRoseTest {
     }
 
     @Test fun shouldLowerSellInAndQualityOfAllItemsAtTheEndOfEachDay() {
-        val items = arrayOf<Item>(
+        val items = arrayOf(
                 Item("anItem", 3, 5),
                 Item("anItem", 3, 5))
         val app = GildedRose(items)
@@ -31,7 +31,7 @@ class GildedRoseTest {
 
     @Test
     fun shouldQualityBeNeverNegative() {
-        val items = arrayOf<Item>(Item("anItem", 10, 0))
+        val items = arrayOf(Item("anItem", 10, 0))
         val app = GildedRose(items)
         app.updateQuality()
         assertEquals("anItem", app.items[0].name)
