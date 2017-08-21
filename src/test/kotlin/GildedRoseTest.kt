@@ -7,12 +7,10 @@ class GildedRoseTest {
 
     @Test
     fun shouldLowerSellInAndQualityOfItemAtTheEndOfEachDay() {
-        val items = arrayOf(Item("anItem", 3, 5))
-        val app = GildedRose(items)
-        app.updateQuality()
-        assertEquals("anItem", app.items[0].name)
-        assertEquals(2, app.items[0].sellIn)
-        assertEquals(4, app.items[0].quality)
+        val result = updateQualityTo(arrayOf(Item("anItem", 3, 5)))
+        assertEquals("anItem", result[0].name)
+        assertEquals(2, result[0].sellIn)
+        assertEquals(4, result[0].quality)
     }
 
     @Test fun shouldLowerSellInAndQualityOfAllItemsAtTheEndOfEachDay() {
@@ -37,6 +35,12 @@ class GildedRoseTest {
         assertEquals("anItem", app.items[0].name)
         assertEquals(9, app.items[0].sellIn)
         assertEquals(0, app.items[0].quality)
+    }
+
+    private fun updateQualityTo(items: Array<Item>): Array<Item> {
+        val app = GildedRose(items)
+        app.updateQuality()
+        return app.items
     }
 
 
