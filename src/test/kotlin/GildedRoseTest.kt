@@ -65,7 +65,7 @@ class GildedRoseTest {
     }
 
     @Test
-    fun sulfurasNeverShouldBeSold() {
+    fun sulfurasNeverShouldBeSoldOrDecreasesInQuality() {
         val items = updateQualityTo(arrayOf(Item("Sulfuras, Hand of Ragnaros", 0, 5)))
         assertEquals(0, items[0].sellIn)
         assertEquals(5, items[0].quality)
