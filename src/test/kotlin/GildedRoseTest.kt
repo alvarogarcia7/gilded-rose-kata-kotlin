@@ -42,6 +42,21 @@ class GildedRoseTest {
         assertEquals(0, items[0].quality)
     }
 
+
+    @Test
+    fun agedBrieActuallyIncreasesWhenADayPassesBy() {
+        val items = updateQualityTo(arrayOf(Item("Aged Brie", 1, 2)))
+        assertEquals(0, items[0].sellIn)
+        assertEquals(3, items[0].quality)
+    }
+
+    @Test
+    fun agedBrieActuallyIncreasesDoubleFastWhenADayPassesByAndTheSellInHasExpired() {
+        val items = updateQualityTo(arrayOf(Item("Aged Brie", 0, 2)))
+        assertEquals(-1, items[0].sellIn)
+        assertEquals(4, items[0].quality)
+    }
+
     private fun updateQualityTo(items: Array<Item>): Array<Item> {
         val app = GildedRose(items)
         app.updateQuality()
