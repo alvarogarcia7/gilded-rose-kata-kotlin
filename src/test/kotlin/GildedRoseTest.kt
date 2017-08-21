@@ -5,15 +5,16 @@ import org.junit.Test
 
 class GildedRoseTest {
 
-    @Test fun foo() {
-        val items = arrayOf<Item>(Item("foo", 0, 0))
+    @Test
+    fun shouldLowerSellInAndQualityOfItemAtTheEndOfEachDay() {
+        val items = arrayOf<Item>(Item("anItem", 3, 5))
         val app = GildedRose(items)
         app.updateQuality()
-        assertEquals("fixme", app.items[0].name)
+        assertEquals("anItem", app.items[0].name)
+        assertEquals(2, app.items[0].sellIn)
+        assertEquals(4, app.items[0].quality)
 
     }
-
-
 }
 
 
