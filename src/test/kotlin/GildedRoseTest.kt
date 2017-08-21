@@ -34,6 +34,14 @@ class GildedRoseTest {
         assertEquals(0, items[0].quality)
     }
 
+    @Test
+    fun shouldQualityDecreaseTwiceIfTheItemSellPeriodIsEnded() {
+        val items = updateQualityTo(arrayOf(Item("anItem", 0, 2)))
+        assertEquals("anItem", items[0].name)
+        assertEquals(-1, items[0].sellIn)
+        assertEquals(0, items[0].quality)
+    }
+
     private fun updateQualityTo(items: Array<Item>): Array<Item> {
         val app = GildedRose(items)
         app.updateQuality()
