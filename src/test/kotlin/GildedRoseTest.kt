@@ -97,7 +97,13 @@ class GildedRoseTest {
         assertEquals(9, items[0].sellIn)
         assertEquals(32, items[0].quality)
     }
-    
+
+    @Test
+    fun `backstage passes increases quality when SellIn value approaches -  Case Tier 1`() {
+        val items = updateQualityTo(arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 5, 30)))
+        assertEquals(4, items[0].sellIn)
+        assertEquals(33, items[0].quality)
+    }
 
     private fun `"Sulfuras", being a legendary item, never has to be sold or decreases in Quality`(sellIn: Int, quality: Int) {
         val items = updateQualityTo(arrayOf(Item("Sulfuras, Hand of Ragnaros", sellIn, quality)))
