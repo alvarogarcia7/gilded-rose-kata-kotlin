@@ -86,23 +86,26 @@ class GildedRoseTest {
 
     @Test
     fun `backstage passes increases quality when SellIn value approaches -  Case Tier 3`() {
-        val items = updateQualityTo(arrayOf(backstagePass(11,30)))
+        val x = 30
+        val items = updateQualityTo(arrayOf(backstagePass(11, x)))
         assertEquals(10, items[0].sellIn)
-        assertEquals(31, items[0].quality)
+        assertEquals(x + 1, items[0].quality)
     }
 
     @Test
     fun `backstage passes increases quality when SellIn value approaches -  Case Tier 2`() {
-        val items = updateQualityTo(arrayOf(backstagePass(10, 30)))
+        val x = 30
+        val items = updateQualityTo(arrayOf(backstagePass(10, x)))
         assertEquals(9, items[0].sellIn)
-        assertEquals(32, items[0].quality)
+        assertEquals(x + 2, items[0].quality)
     }
 
     @Test
     fun `backstage passes increases quality when SellIn value approaches -  Case Tier 1`() {
-        val items = updateQualityTo(arrayOf(backstagePass(5,30)))
+        val x = 30
+        val items = updateQualityTo(arrayOf(backstagePass(5,x)))
         assertEquals(4, items[0].sellIn)
-        assertEquals(33, items[0].quality)
+        assertEquals(x + 3, items[0].quality)
     }
 
     @Test
