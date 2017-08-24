@@ -86,28 +86,28 @@ class GildedRoseTest {
 
     @Test
     fun `backstage passes increases quality when SellIn value approaches -  Case Tier 3`() {
-        val items = updateQualityTo(arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 11, 30)))
+        val items = updateQualityTo(arrayOf(backstagePass(11,30)))
         assertEquals(10, items[0].sellIn)
         assertEquals(31, items[0].quality)
     }
 
     @Test
     fun `backstage passes increases quality when SellIn value approaches -  Case Tier 2`() {
-        val items = updateQualityTo(arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 10, 30)))
+        val items = updateQualityTo(arrayOf(backstagePass(10, 30)))
         assertEquals(9, items[0].sellIn)
         assertEquals(32, items[0].quality)
     }
 
     @Test
     fun `backstage passes increases quality when SellIn value approaches -  Case Tier 1`() {
-        val items = updateQualityTo(arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 5, 30)))
+        val items = updateQualityTo(arrayOf(backstagePass(5,30)))
         assertEquals(4, items[0].sellIn)
         assertEquals(33, items[0].quality)
     }
 
     @Test
     fun `backstage passes increases quality when SellIn value approaches -  Expired`() {
-        val items = updateQualityTo(arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 0, 30)))
+        val items = updateQualityTo(arrayOf(backstagePass(0,30)))
         assertEquals(-1, items[0].sellIn)
         assertEquals(0, items[0].quality)
     }
@@ -117,6 +117,8 @@ class GildedRoseTest {
         assertEquals(sellIn, items[0].sellIn)
         assertEquals(quality, items[0].quality)
     }
+
+    private fun backstagePass(sellIn: Int, quality: Int) = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality)
 
     private fun updateQualityTo(items: Array<Item>): Array<Item> {
         val app = GildedRose(items)
