@@ -5,9 +5,7 @@ class GildedRose(var items: Array<Item>) {
     fun updateQuality() {
         for (i in items.indices) {
             if (items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                continue
-            }
-            if (items[i].name.equals("Aged Brie")) {
+            } else if (items[i].name.equals("Aged Brie")) {
                 increaseQuality(items[i])
                 if (items[i].sellIn < 0) {
                     increaseQuality(items[i])
