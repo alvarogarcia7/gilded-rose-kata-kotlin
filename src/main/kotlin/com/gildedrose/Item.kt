@@ -4,7 +4,7 @@ data class Item(var name: String, var sellIn: Int, var quality: Int)
 
 open class MyItem {
 
-    private var item: Item
+    internal var item: Item
 
     constructor(item: Item){
         this.item = item
@@ -12,10 +12,7 @@ open class MyItem {
 
     open fun updateQuality(): MyItem {
         if (item.name.equals("Aged Brie")) {
-            increaseQuality()
-            if (item.sellIn < 0) {
-                increaseQuality()
-            }
+
         } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             increaseQuality()
 
@@ -61,7 +58,7 @@ open class MyItem {
         }
     }
 
-    private fun increaseQuality() {
+    internal fun increaseQuality() {
         if (item.quality < 50) {
             item.quality = item.quality + 1
         }
@@ -76,7 +73,20 @@ class ImmutableItem(item: Item) : MyItem(item) {
     }
 }
 
-class AgedBrie(item: Item) : MyItem(item)
+class AgedBrie(item: Item) : MyItem(item) {
+    override fun updateQuality(): MyItem {
+        increaseQuality()
+        if (item.sellIn < 0) {
+            increaseQuality()
+        }
+        item.sellIn = item.sellIn - 1
+
+        if (item.sellIn < 0) {
+            increaseQuality()
+        }
+        return this
+    }
+}
 
 object ItemFactory {
     fun aNew(item: Item): MyItem {
