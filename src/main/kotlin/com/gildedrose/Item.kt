@@ -61,7 +61,30 @@ open class MyItem {
     }
 }
 
-class BackstagePasses(name: Item) : MyItem(name)
+class BackstagePasses(name: Item) : MyItem(name) {
+    override fun updateQuality(): MyItem {
+        increaseQuality()
+
+        if (item.sellIn < 11) {
+            increaseQuality()
+        }
+
+        if (item.sellIn < 6) {
+            increaseQuality()
+        }
+        if (item.sellIn < 0) {
+            item.quality = 0
+        }
+
+        item.sellIn = item.sellIn - 1
+
+        if (item.sellIn < 0) {
+            item.quality = 0
+        }
+
+        return this
+    }
+}
 
 class ImmutableItem(item: Item) : MyItem(item) {
     override fun updateQuality():MyItem{
