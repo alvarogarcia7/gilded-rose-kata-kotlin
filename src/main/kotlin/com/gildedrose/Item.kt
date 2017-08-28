@@ -41,6 +41,8 @@ open class MyItem {
             item.quality = item.quality + 1
         }
     }
+
+    internal fun isExpired() = item.sellIn < 0
 }
 
 class BackstagePasses(name: Item) : MyItem(name) {
@@ -88,7 +90,6 @@ class AgedBrie(item: Item) : MyItem(item) {
         return this
     }
 
-    private fun isExpired() = item.sellIn < 0
 }
 
 object ItemFactory {
