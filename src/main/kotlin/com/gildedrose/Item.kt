@@ -77,16 +77,18 @@ class ImmutableItem(item: Item) : MyItem(item) {
 class AgedBrie(item: Item) : MyItem(item) {
     override fun updateQuality(): MyItem {
         increaseQuality()
-        if (item.sellIn < 0) {
+        if (isExpired()) {
             increaseQuality()
         }
         item.sellIn = item.sellIn - 1
 
-        if (item.sellIn < 0) {
+        if (isExpired()) {
             increaseQuality()
         }
         return this
     }
+
+    private fun isExpired() = item.sellIn < 0
 }
 
 object ItemFactory {
