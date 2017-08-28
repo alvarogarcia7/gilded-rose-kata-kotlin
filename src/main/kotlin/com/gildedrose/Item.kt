@@ -17,13 +17,17 @@ open class MyItem {
             decreaseQuality()
         }
 
-        item.sellIn = item.sellIn - 1
+        decreaseSellIn()
 
         if (isExpired()) {
             decreaseQuality()
         }
 
         return this
+    }
+
+    internal fun decreaseSellIn() {
+        item.sellIn = item.sellIn - 1
     }
 
     fun toDTO(): Item {
@@ -60,7 +64,7 @@ class BackstagePasses(name: Item) : MyItem(name) {
             item.quality = 0
         }
 
-        item.sellIn = item.sellIn - 1
+        decreaseSellIn()
 
         if (isExpired()) {
             item.quality = 0
@@ -82,7 +86,8 @@ class AgedBrie(item: Item) : MyItem(item) {
         if (isExpired()) {
             increaseQuality()
         }
-        item.sellIn = item.sellIn - 1
+
+        decreaseSellIn()
 
         if (isExpired()) {
             increaseQuality()
