@@ -10,10 +10,7 @@ open class MyItem {
         this.item = item
     }
 
-    fun updateQuality(): MyItem {
-        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            return this
-        }
+    open fun updateQuality(): MyItem {
         if (item.name.equals("Aged Brie")) {
             increaseQuality()
             if (item.sellIn < 0) {
@@ -73,20 +70,24 @@ open class MyItem {
 
 class BackstagePasses(name: Item) : MyItem(name)
 
-class ImmutableItem(item: Item) : MyItem(item)
+class ImmutableItem(item: Item) : MyItem(item) {
+    override fun updateQuality():MyItem{
+        return this
+    }
+}
 
 class AgedBrie(item: Item) : MyItem(item)
 
 object ItemFactory {
-    fun aNew(name: Item): MyItem {
-        if (name.equals("Sulfuras, Hand of Ragnaros")) {
-            return ImmutableItem(name)
-        } else if (name.equals("Aged Brie")) {
-            return AgedBrie(name)
-        } else if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            return BackstagePasses(name)
+    fun aNew(item: Item): MyItem {
+        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            return ImmutableItem(item)
+        } else if (item.name.equals("Aged Brie")) {
+            return AgedBrie(item)
+        } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            return BackstagePasses(item)
         } else {
-            return MyItem(name)
+            return MyItem(item)
         }
     }
 }
