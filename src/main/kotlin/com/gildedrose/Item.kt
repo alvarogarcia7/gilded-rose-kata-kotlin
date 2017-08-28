@@ -2,10 +2,6 @@ package com.gildedrose
 
 data class Item(var name: String, var sellIn: Int, var quality: Int)
 
-class ImmutableItem(item: Item) : MyItem(item)
-
-class AgedBrie(item: Item) : MyItem(item)
-
 open class MyItem {
 
     private var item: Item
@@ -76,6 +72,10 @@ open class MyItem {
 }
 
 class BackstagePasses(name: Item) : MyItem(name)
+
+class ImmutableItem(item: Item) : MyItem(item)
+
+class AgedBrie(item: Item) : MyItem(item)
 
 object ItemFactory {
     fun aNew(name: Item): MyItem {
