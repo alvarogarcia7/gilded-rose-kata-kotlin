@@ -13,13 +13,13 @@ open class MyItem {
     open fun updateQuality(): MyItem {
 
         decreaseQuality()
-        if (item.sellIn < 0) {
+        if (isExpired()) {
             decreaseQuality()
         }
 
         item.sellIn = item.sellIn - 1
 
-        if (item.sellIn < 0) {
+        if (isExpired()) {
             decreaseQuality()
         }
 
@@ -56,13 +56,13 @@ class BackstagePasses(name: Item) : MyItem(name) {
         if (item.sellIn < 6) {
             increaseQuality()
         }
-        if (item.sellIn < 0) {
+        if (isExpired()) {
             item.quality = 0
         }
 
         item.sellIn = item.sellIn - 1
 
-        if (item.sellIn < 0) {
+        if (isExpired()) {
             item.quality = 0
         }
 
