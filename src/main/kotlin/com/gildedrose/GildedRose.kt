@@ -9,17 +9,5 @@ class GildedRose(var items: Array<Item>) {
         }
     }
 
-    private fun decreaseQuality(i: Int) {
-        if (items[i].quality > 0) {
-            items[i].quality = items[i].quality - 1
-        }
-    }
-
-    private fun increaseQuality(item: Item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1
-        }
-    }
-
 }
 
